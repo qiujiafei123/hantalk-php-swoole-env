@@ -27,7 +27,8 @@ RUN wget https://github.com/redis/hiredis/archive/v0.14.1.tar.gz -O hiredis.tar.
 RUN curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/bin/composer
 # use aliyun composer
-RUN composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
+RUN composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/ \
+	&& composer self-update --1
 
 # swoole ext
 RUN wget https://github.com/swoole/swoole-src/archive/v${SWOOLE_VERSION}.tar.gz -O swoole.tar.gz \
